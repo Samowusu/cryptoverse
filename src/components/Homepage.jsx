@@ -5,12 +5,13 @@ import { Link } from "react-router-dom";
 
 import { useGetCryptosQuery } from "../services/cryptoApi";
 import { Cryptocurrencies, News } from "../components";
+import Loader from "./Loader";
 
 function Homepage() {
   const { data, isFetching } = useGetCryptosQuery(10);
   const globalStats = data?.data?.stats;
 
-  if (isFetching) return "Loading...";
+  if (isFetching) return <Loader />;
 
   return (
     <>
@@ -66,7 +67,7 @@ function Homepage() {
           <Link to={"/news"}>Show more</Link>
         </Typography.Title>
       </div>
-      <News />
+      <News simplified={true} />
     </>
   );
 }
