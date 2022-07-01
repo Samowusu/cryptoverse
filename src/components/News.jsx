@@ -48,7 +48,7 @@ function News({ simplified }) {
         </Col>
       )}
       {cryptoNews.value.map((news, index) => (
-        <Col xs={24} sm={12} lg={8} key={index}>
+        <Col xs={24} sm={12} lg={12} xl={8} key={index}>
           <Card hoverable className="news-card">
             <a href={news.url} target="_blank" rel="noreferrer">
               <div className="news-image-container">

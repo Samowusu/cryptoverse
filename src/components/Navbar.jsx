@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Menu, Typography, Avatar } from "antd";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {
   HomeOutlined,
   MoneyCollectOutlined,
@@ -25,7 +25,7 @@ function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (screenSizeState <= 768) {
+    if (screenSizeState <= 800) {
       setActiveMenuState(false);
     } else {
       setActiveMenuState(true);
@@ -40,7 +40,7 @@ function Navbar() {
       <div className="logo-container">
         <Avatar src={Icon} size="large" />
         <Typography.Title level={2} className="logo">
-          <Link to={"/"}>Cryptoverse</Link>
+          <NavLink to={"/"}>Cryptoverse</NavLink>
         </Typography.Title>
         <Button className="menu-control-container" onClick={toggleMenuHandler}>
           <MenuOutlined />
@@ -48,17 +48,17 @@ function Navbar() {
       </div>
       {activeMenuState && (
         <Menu theme="dark">
-          <Menu.Item icon={<HomeOutlined />}>
-            <Link to={"/"}>Home</Link>
+          <Menu.Item icon={<HomeOutlined />} key={"item-1"}>
+            <NavLink to={"/"}>Home</NavLink>
           </Menu.Item>
-          <Menu.Item icon={<FundOutlined />}>
-            <Link to={"/cryptocurrencies"}>Cryptocurrencies</Link>
+          <Menu.Item icon={<FundOutlined />} key={"item-2"}>
+            <NavLink to={"/cryptocurrencies"}>Cryptocurrencies</NavLink>
           </Menu.Item>
-          <Menu.Item icon={<MoneyCollectOutlined />}>
-            <Link to={"/exchanges"}>Exchanges</Link>
+          <Menu.Item icon={<MoneyCollectOutlined />} key={"item-3"}>
+            <NavLink to={"/exchanges"}>Exchanges</NavLink>
           </Menu.Item>
-          <Menu.Item icon={<BulbOutlined />}>
-            <Link to={"/news"}>News</Link>
+          <Menu.Item icon={<BulbOutlined />} key={"item-4"}>
+            <NavLink to={"/news"}>News</NavLink>
           </Menu.Item>
         </Menu>
       )}
